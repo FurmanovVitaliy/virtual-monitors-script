@@ -1,0 +1,103 @@
+Section "ServerLayout"
+    Identifier     "Layout0"
+    Screen      0  "Screen0" 0 0
+    Screen      1  "Screen1" Above "Screen0"
+    Screen      2  "Screen2" Above "Screen1"
+    Screen      3  "Screen3" Above "Screen2"
+EndSection
+
+Section "Monitor"
+    Identifier     "HDMI-A-0"
+    VendorName     "LEN"
+    ModelName      "LEN L24e-20"
+    Option         "DPMS"
+    Option         "Primary" "true"
+    HorizSync       54.0 - 90.0
+    VertRefresh     49.0 - 76.0
+EndSection
+
+Section "Monitor"
+    Identifier     "HDMI-A-1"
+    VendorName     "Philips FTV"
+    ModelName      "Philips FTV"
+    Option         "DPMS"
+    Modeline "3840x2160_30.00"  297.00  3840 4016 4104 4400  2160 2168 2178 2250 +HSync -VSync
+    Option "PreferredMode" "3840x2160_30.00"
+EndSection
+
+Section "Monitor"
+    Identifier "DisplayPort-0"
+    VendorName     "LEN"
+    ModelName      "LEN L24e-20"
+    Option         "DPMS"
+    Option         "Primary" "false"
+    Modeline "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+    Option "PreferredMode" "1920x1080_60.00"
+    Option         "CustomEDID" "DisplayPort-0:/etc/X11/displayport-0.edid"
+EndSection
+
+Section "Monitor"
+    Identifier "DisplayPort-1"
+    VendorName     "LEN"
+    ModelName      "LEN L24e-20"
+    Option         "DPMS"
+    Option         "Primary" "false"
+    Modeline "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+    Option "PreferredMode" "1920x1080_60.00"
+    Option         "CustomEDID" "DisplayPort-1:/etc/X11/displayport-1.edid"
+EndSection
+
+
+Section "Device"
+    Driver      "amdgpu"
+    Screen      0
+    Identifier  "Device0"
+    Option      "ZaphodHeads" "HDMI-A-0"
+EndSection
+
+Section "Device"
+    Driver      "amdgpu"
+    Screen      1
+    Identifier  "Device1"
+    Option      "ZaphodHeads" "HDMI-A-1"
+EndSection
+
+Section "Device"
+    Driver      "amdgpu"
+    Screen      2
+    Identifier  "Device2"
+    Option      "ZaphodHeads" "DisplayPort-0"
+EndSection
+
+Section "Device"
+    Driver      "amdgpu"
+    Screen      3
+    Identifier  "Device3"
+    Option      "ZaphodHeads" "DisplayPort-1"
+EndSection
+
+Section "Screen"
+    Identifier     "Screen0"
+    Device         "Device0"
+EndSection
+
+Section "Screen"
+    Identifier     "Screen1"
+    Device         "Device1"
+    Monitor "HDMI-A-1"
+    DefaultDepth 24
+    SubSection "Display"
+        Depth 24
+        Modes "3840x2160_30.00"
+    EndSubSection
+EndSection
+
+Section "Screen"
+    Identifier     "Screen2"
+    Device         "Device2"
+EndSection
+
+Section "Screen"
+    Identifier     "Screen3"
+    Device         "Device3"
+EndSection
