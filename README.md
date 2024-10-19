@@ -52,3 +52,7 @@ Here is the ticket and solution I found: [Arch Linux Forum Discussion](https://b
 
 ```bash
 initcall_blacklist=simpledrm_platform_driver_init
+```
+## Notes
+ - This repository is part of [Pixel Cloud Project](https://github.com/FurmanovVitaliy/self-hosted-cloud-gaming-service)
+
