@@ -24,6 +24,8 @@ The following tools are required to run this script:
 
 **IMPORTANT**:  
 This script is designed for **Arch Linux** and has only been tested on **Arch Linux**.
+This script will only work in an **X11** environment. Make sure you are not using **Wayland**.
+
 
 ## Usage Instructions
 
